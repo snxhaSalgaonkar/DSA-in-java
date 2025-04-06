@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "vs code",
+			"path": "../.."
+		},
+		{
+			"name": "binarySearch",
+			"path": "../../../Desktop/vs code ide/First java project VS/src/binarySearch"
+		},
+		{
+			"name": "basic",
+			"path": "../../../Desktop/vs code ide/First java project VS/src/basic"
+		}
+	],
+	"settings": {}
+}

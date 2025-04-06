@@ -1,0 +1,31 @@
+package twoDArray.question;
+
+public class q7 {
+    public static void print(int[][]arr){
+        int m =arr.length, n=arr[0].length;
+        for (int i = 0; i <m; i++) {//row
+            for(int j=0; j<n; j++){//column
+               System.out.print(arr[i][j]+ " ");
+ 
+            }
+            System.out.println();   
+         }
+         System.out.println();
+
+    }
+    public static void main(String[] args) {
+        int[][]arr={{1,2,3,},{4,5,6},{7,8,9}};
+        int m =arr.length;
+        int[][] temp=new int[m][m];
+        print(arr);
+        for (int i=0; i<m; i++) {//important
+            for (int j=0; j<m; j++) {
+                temp[j][m-i-1]=arr[i][j];    
+            }
+           
+        }
+        print(temp);
+        
+    }
+
+}
