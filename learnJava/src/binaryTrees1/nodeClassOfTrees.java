@@ -1,6 +1,5 @@
 package binaryTrees1;
 
-import javax.swing.tree.TreeNode;
 
 class Node{
     int val;
