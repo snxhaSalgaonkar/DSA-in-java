@@ -45,6 +45,64 @@ public class leetcode1971 {
         return vis[end];   
     }
 
+
+    //leetcode 841
+    public boolean canVisitAllRooms(List<List<Integer>> adj) {
+        int n= adj.size();
+        boolean[] vis = new boolean[n];//false;
+        vis[0]=true;
+
+        bfs(0,adj,vis);
+    
+
+        for(boolean ele: vis){
+            if(ele==false){
+                return false;
+            }
+        }
+        return true;
+
+        
+    }
+    private void bfs(int start, List<List<Integer>> adj, boolean[] vis) {
+        Queue<Integer> q = new ArrayDeque<>();
+        q.add(start);
+        while (q.size()!=0) {
+            int front = q.remove();
+            for(int ele: adj.get(front)){
+                if(!vis[ele]){
+                    q.add(ele);
+                    vis[ele]=true;
+                }
+            }
+            
+        }
+
+    }
+
+
+
+    //leetcode 200
+    class Solution {
+    
+    public int numIslands(char[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        boolean[][] vis = new boolean[n][m];
+        int count=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(!vis[i][j] && grid[i][j]=='1'){
+                    count++;
+                    bfs(i,j,grid,vis);
+                }
+            }
+        }
+        return count;  
+    }
+    
+
+}
     public static void main(String[] args) {
         int n=3;
         int[][] edg ={{0,1},{1,2},{2,0}};

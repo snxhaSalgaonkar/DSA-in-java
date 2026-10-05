@@ -1,59 +1,102 @@
 package binaryTrees1;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+class Node {
+    int val;
+    Node left;
+    Node right;
+
+    Node(int val) {
+        this.val = val;
+    }
+
+}
+
 public class traversals {
-    public static void preOrder(Node root){//root left right
-        if(root==null )return;
-        System.out.print(root.val+" ");
+    public static void preOrder(Node root) {// root left right
+        if (root == null)
+            return;
+        System.out.print(root.val + " ");
         preOrder(root.left);
         preOrder(root.right);
     }
-    public static void inOrder(Node root){//left root right
-        if(root==null )return;
+
+    public static void inOrder(Node root) {// left root right
+        if (root == null)
+            return;
         inOrder(root.left);
-        System.out.print(root.val+" ");
+        System.out.print(root.val + " ");
         inOrder(root.right);
     }
-    public static void postOrder(Node root){//left right root
-        if(root==null )return;
+
+    public static void postOrder(Node root) {// left right root
+        if (root == null)
+            return;
         postOrder(root.left);
         postOrder(root.right);
-        System.out.print(root.val+" ");
+        System.out.print(root.val + " ");
     }
 
-    //reverse
+    // reverse
 
-    public static void reversePreOrder(Node root){//root left right
-        if(root==null )return;
-        System.out.print(root.val+" ");
+    public static void reversePreOrder(Node root) {// root left right
+        if (root == null)
+            return;
+        System.out.print(root.val + " ");
         reversePreOrder(root.right);
         reversePreOrder(root.left);
     }
-    public static void reverseInOrder(Node root){//left root right
-        if(root==null )return;
+
+    public static void reverseInOrder(Node root) {// left root right
+        if (root == null)
+            return;
         reverseInOrder(root.right);
-        System.out.print(root.val+" ");
+        System.out.print(root.val + " ");
         reverseInOrder(root.left);
     }
-    public static void reversepostOrder(Node root){//left right root
-        if(root==null )return;
+
+    public static void reversepostOrder(Node root) {// left right root
+        if (root == null)
+            return;
         reversepostOrder(root.right);
         reversepostOrder(root.left);
-        System.out.print(root.val+" ");
+        System.out.print(root.val + " ");
     }
-    public static void main(String[] args) {
-        Node a = new Node(1);//a is root
-        Node b= new Node(2);
-        Node c= new Node(3);
-        Node d= new Node(4);
-        Node e= new Node(5);
-        Node f= new Node(6);
-        Node g= new Node(7);
-        Node h= new Node(20);
 
-        a.left=b; a.right=c;
-        b.left=d; b.right=e;
-        c.left=f; c.right=g;
-        e.right=h;
+    public static void LevelOrderTraversal(Node root) {
+        Queue<Node> q = new ArrayDeque<>();
+        if (root != null)
+            q.add(root);
+        while (!q.isEmpty()) {
+            Node front = q.remove();
+            System.out.print(front.val + " ");
+            if (front.left != null)
+                q.add(front.left);
+            if (front.right != null)
+                q.add(front.right);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);// a is root
+        Node b = new Node(2);
+        Node c = new Node(3);
+        Node d = new Node(4);
+        Node e = new Node(5);
+        Node f = new Node(6);
+        Node g = new Node(7);
+        Node h = new Node(20);
+
+        a.left = b;
+        a.right = c;
+        b.left = d;
+        b.right = e;
+        c.left = f;
+        c.right = g;
+        e.right = h;
 
         System.out.println("preorder");
         preOrder(a);
@@ -77,6 +120,10 @@ public class traversals {
         System.out.println();
         System.out.println("reverse postorder");
         reversepostOrder(a);
+
+        System.out.println();
+        System.out.println("Level Order Traversal");
+        LevelOrderTraversal(a);
     }
 
 }
